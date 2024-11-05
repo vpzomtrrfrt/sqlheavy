@@ -156,9 +156,9 @@ namespace SQLHeavy {
       lock ( this._queue ) {
         if ( this._queue != null && (this._queue.get_length () > 0) ) {
           try {
-            for ( GLib.SequenceIter<SQLHeavy.Query> iter = this._queue.get_begin_iter () ;
-                  !iter.is_end () ;
-                  iter = iter.next () ) {
+            while(!this._queue.is_empty()) {
+              var iter = this._queue.get_begin_iter();
+
               SQLHeavy.QueryResult result = new SQLHeavy.QueryResult.no_exec (iter.get ());
               result.next_internal ();
               iter.remove ();
