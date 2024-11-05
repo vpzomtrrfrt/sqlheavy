@@ -17,7 +17,7 @@ namespace SQLHeavy {
      * List of all SQLHeavy.Row objects for this table, used for
      * change notification
      */
-    private GLib.HashTable <int64?, GLib.Sequence<unowned SQLHeavy.Row>> child_rows = new GLib.HashTable<int64?, GLib.Sequence<unowned SQLHeavy.Row>>.full (GLib.int64_hash, GLib.int64_equal, GLib.g_free, (GLib.DestroyNotify) g_sequence_free);
+    private GLib.HashTable <int64?, GLib.Sequence<unowned SQLHeavy.Row>> child_rows = new GLib.HashTable<int64?, GLib.Sequence<unowned SQLHeavy.Row>>(GLib.int64_hash, GLib.int64_equal);
 
     /**
      * A new row was inserted into the table
@@ -96,7 +96,7 @@ namespace SQLHeavy {
       lock ( this._field_data ) {
         if ( this._field_data == null ) {
           this._field_data = new GLib.Sequence<FieldInfo> ();
-          this._field_names = new GLib.HashTable<string, int?>.full (GLib.str_hash, GLib.str_equal, GLib.g_free, GLib.g_free);
+          this._field_names = new GLib.HashTable<string, int?>(GLib.str_hash, GLib.str_equal);
 
           var result = new SQLHeavy.Query (this.queryable, @"PRAGMA table_info (`$(escape_string (this.name))`);").execute (null);
 
@@ -122,7 +122,7 @@ namespace SQLHeavy {
       lock (this._foreign_key_data) {
         if ( this._foreign_key_data == null ) {
           this._foreign_key_data = new GLib.Sequence<ForeignKeyInfo> ();
-          this._foreign_key_names = new GLib.HashTable<string, int?>.full (GLib.str_hash, GLib.str_equal, GLib.g_free, GLib.g_free);
+          this._foreign_key_names = new GLib.HashTable<string, int?>(GLib.str_hash, GLib.str_equal);
 
           var result = new SQLHeavy.Query (this.queryable, @"PRAGMA foreign_key_list (`$(escape_string (this.name))`);").execute (null);
 

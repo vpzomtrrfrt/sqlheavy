@@ -130,14 +130,14 @@ namespace SQLHeavy {
             if ( this.user_func_data.is_scalar ) {
               this._data = this.ctx.get_auxdata<GLib.HashTable<string, GLib.Value?>> (0);
               if ( this._data == null ) {
-                this.ctx.set_auxdata<GLib.HashTable<string, GLib.Value?>> (0, new GLib.HashTable<string, GLib.Value?>.full (GLib.str_hash, GLib.str_equal, GLib.g_free, (GLib.DestroyNotify) g_boxed_value_free));
+                this.ctx.set_auxdata<GLib.HashTable<string, GLib.Value?>> (0, new GLib.HashTable<string, GLib.Value?>(GLib.str_hash, GLib.str_equal));
                 this._data = this.ctx.get_auxdata<GLib.HashTable<string, GLib.Value?>> (0);
               }
             }
             else {
               GLib.Memory.copy (&this._data, this.ctx.aggregate ((int)sizeof (GLib.HashTable)), sizeof (GLib.HashTable));
               if ( this._data == null )
-                this._data = g_hash_table_ref (new GLib.HashTable<string, GLib.Value?>.full (GLib.str_hash, GLib.str_equal, GLib.g_free, GLib.Object.unref));
+                this._data = g_hash_table_ref (new GLib.HashTable<string, GLib.Value?>(GLib.str_hash, GLib.str_equal));
             }
           }
 

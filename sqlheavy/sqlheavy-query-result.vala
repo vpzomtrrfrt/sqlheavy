@@ -351,7 +351,7 @@ namespace SQLHeavy {
      */
     public int field_index (string field) throws SQLHeavy.Error {
       if ( this._field_names == null ) {
-        this._field_names = new GLib.HashTable<string, int?>.full (GLib.str_hash, GLib.str_equal, GLib.g_free, GLib.g_free);
+        this._field_names = new GLib.HashTable<string, int?>(GLib.str_hash, GLib.str_equal);
 
         var fields = this.field_count;
         for ( int i = 0 ; i < fields ; i++ )
