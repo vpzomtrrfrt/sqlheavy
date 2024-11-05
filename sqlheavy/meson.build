@@ -56,5 +56,6 @@ pkg.generate(
   sqlheavy_lib,
   description: 'GObject wrapper for SQLite.',
   requires: ['glib-2.0', 'gobject-2.0', 'gio-2.0'],
-  version: api_version
+  version: api_version,
+  filebase: 'sqlheavy-0.2'
 )
