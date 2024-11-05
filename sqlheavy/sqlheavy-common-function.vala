@@ -139,7 +139,6 @@ namespace SQLHeavy {
         }
       }
 
-      GLib.free (outbuf);
       return res;
     }
 
