@@ -1,6 +1,7 @@
-api_version = '0.2'
-
 gnome = import('gnome')
+pkg = import('pkgconfig')
+
+api_version = '0.2'
 
 sources = files('''
   sqlheavy-backup.vala
@@ -39,13 +40,21 @@ sqlheavy_lib = library(
   'SQLHeavy',
   sources,
   resources,
+  version: api_version,
   vala_gir: 'SQLHeavy-' + api_version + '.gir',
   dependencies: [glib_dep, gobject_dep, gio_dep, dependency('gmodule-2.0'), dependency('sqlite3')],
   install: true,
   install_dir: [
-    '@0@/sqlheavy-@1@'.format(get_option('libdir'), api_version),
-    '@0@/sqlheavy-@1@'.format(get_option('includedir'), api_version),
+    true,
+    true,
     true,
     true
   ]
+)
+
+pkg.generate(
+  sqlheavy_lib,
+  description: 'GObject wrapper for SQLite.',
+  requires: ['glib-2.0', 'gobject-2.0', 'gio-2.0'],
+  version: api_version
 )
