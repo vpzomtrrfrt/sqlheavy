@@ -37,7 +37,7 @@ gobject_dep = dependency('gobject-2.0')
 gio_dep = dependency('gio-2.0')
 
 sqlheavy_lib = library(
-  'SQLHeavy',
+  'sqlheavy-' + api_version,
   sources,
   resources,
   version: api_version,
