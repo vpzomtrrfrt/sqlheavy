@@ -268,7 +268,7 @@ namespace SQLHeavy {
     }
 
     /**
-     * Fetch a field from the result as an array of bytes by name
+     * Fetch a field from the result as a timestamp by name
      *
      * @param field field name
      * @return the field value
