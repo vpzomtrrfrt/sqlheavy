@@ -58,9 +58,10 @@ namespace SQLHeavy {
         GLib.Type gtype = args.arg ();
         GLib.Value gval = GLib.Value (gtype);
 
-        if ( (gtype == typeof (int64)) ||
-             (gtype == typeof (int)) )
+        if ( gtype == typeof (int64) )
           gval.set_int64 (args.arg ());
+        else if ( gtype == typeof (int32) )
+          gval.set_int (args.arg ());
         else if ( gtype == typeof (double) )
           gval.set_double (args.arg ());
         else if ( gtype == typeof (string) )
