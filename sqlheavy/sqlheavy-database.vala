@@ -1,7 +1,4 @@
 namespace SQLHeavy {
-  [CCode (cname = "g_sequence_free")]
-  internal extern static void g_sequence_free (GLib.Sequence seq);
-
   [CCode (has_target = false)]
   private delegate int WALCheckpointFunc (Sqlite.Database db, string? dbname);
   [CCode (instance_pos = 0)]
