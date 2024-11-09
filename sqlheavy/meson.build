@@ -4,7 +4,9 @@ pkg = import('pkgconfig')
 api_version = '0.2'
 
 sources = files('''
+  sqlite3.vapi
   sqlheavy-backup.vala
+  sqlheavy-blob-io-stream.vala
   sqlheavy-common-function.vala
   sqlheavy-cursor.vala
   sqlheavy-database.vala

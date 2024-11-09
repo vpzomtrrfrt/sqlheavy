@@ -1022,6 +1022,12 @@ namespace SQLHeavy {
       return ht;
     }
 
+    public BlobIOStream open_blob(string db_name, string table, string column, int64 row_id, bool read_only) throws Error {
+      Sqlite.Blob blob;
+      error_if_not_ok(Sqlite.Blob.open(this.db, db_name, table, column, row_id, read_only ? 0 : 1, out blob));
+      return new BlobIOStream((owned) blob);
+    }
+
     /**
      * Compare two databases
      *
