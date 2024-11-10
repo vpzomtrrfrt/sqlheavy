@@ -61,3 +61,5 @@ pkg.generate(
   version: api_version,
   filebase: 'sqlheavy-0.2'
 )
+
+sqlheavy_dep = declare_dependency(include_directories: include_directories('.'), link_with: sqlheavy_lib)
